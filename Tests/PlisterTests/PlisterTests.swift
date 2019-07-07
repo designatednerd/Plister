@@ -14,6 +14,11 @@ final class PlisterTests: XCTestCase {
         return plistFile
     }()
     
+    override func setUp() {
+        super.setUp()
+        try? self.file.resetToGitHEAD()
+    }
+    
     func testLoadingContents() throws {
        let dict = try Plister.loadAsDictionary(file: self.file)
         
